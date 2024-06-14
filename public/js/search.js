@@ -1,7 +1,6 @@
 $(function() {
-  // 検索フォームの送信時の処理
   $('#search-form').on('submit', function(event) {
-      event.preventDefault(); // デフォルトのフォーム送信を防ぐ
+      event.preventDefault(); 
 
       var name = $('input[name="search"]').val();
       var company = $('select[name="companyId"]').val();
@@ -29,12 +28,11 @@ $(function() {
       .done(function(data) {
           console.log('検索成功');
           var $result = $('#product-list');
-          $result.empty(); // 結果を一度クリア
+          $result.empty(); 
 
           $.each(data.products, function(index, product) {
-              var companyName = product.company ? product.company.company_name : 'N/A'; // companyが存在するか確認
-              var imagePath = product.img_path ? product.img_path : '/path/to/default/image.jpg'; // 画像パスが存在するか確認
-
+              var companyName = product.company ? product.company.company_name : 'N/A';
+              var imagePath = product.img_path ? product.img_path : '/path/to/default/image.jpg'; 
               var html = `
                   <tr>
                       <td>${product.product_name}</td>
@@ -59,15 +57,14 @@ $(function() {
       });
   });
 
-  // 商品削除ボタンのクリック時の処理
   $(document).on('click', '.btn-delete', function(event){
-      event.preventDefault(); // デフォルトのフォーム送信を防ぐ
+      event.preventDefault(); 
 
       var deleteConfirm = confirm('削除してよろしいでしょうか？');
       if(deleteConfirm) {
           console.log('削除非同期開始');
           var clickEle = $(this);
-          var product = clickEle.data('product-id'); // データ属性の取得方法を修正
+          var product = clickEle.data('product-id'); 
           var deleteTarget = clickEle.closest('tr');
           var action = clickEle.closest('form').attr('action');
 

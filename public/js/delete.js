@@ -1,6 +1,6 @@
 $(function() {
     $('.btn-danger').click(function(event){
-        event.preventDefault(); // デフォルトのフォーム送信を防ぐ
+        event.preventDefault();
 
         var deleteConfirm = confirm('削除してよろしいでしょうか？');
         if(deleteConfirm) {

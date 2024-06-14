@@ -39,9 +39,8 @@ class Product extends Model
 
     public function getList($input)
     {
-        $query = Product::query()->with('company'); // 'company' リレーションを eager ロード
+        $query = Product::query()->with('company'); 
 
-        // 検索条件を取得
         $search = $input['search'] ?? null;
         $companyId = $input['companyId'] ?? null;
         $minPrice = $input['min_price'] ?? null;

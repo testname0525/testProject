@@ -36,7 +36,6 @@ public function search(Request $request)
     
 
     public function create() {
-        //$companies = Company::all();
         $companies = (new Company())->getAllCompanies();
 
         return view('products.create', compact('companies'));
@@ -110,13 +109,10 @@ public function search(Request $request)
 {
     $product = Product::findOrFail($id);
     
-    // 関連する sales レコードを削除
     $product->sales()->delete();
     
-    // 商品を削除
     $product->delete();
     
-    // リダイレクト先のURLを返す
     return response()->json(['redirect' => route('products.index')]);
 }
 
