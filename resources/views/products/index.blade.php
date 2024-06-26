@@ -42,15 +42,15 @@
 
     <div class="products mt-5">
         <h2>商品情報</h2>
-        <table class="table table-striped">
+        <table id="fav-table" class="table table-striped">
             <thead>
                 <tr>
-                    <th scope="col">@sortablelink('product_name', '商品名')</th>
-                    <th scope="col">@sortablelink('company_name', 'メーカー')</th>
-                    <th scope="col">@sortablelink('price', '価格')</th>
-                    <th scope="col">@sortablelink('stock', '在庫数')</th>
-                    <th scope="col">@sortablelink('comment', 'コメント')</th>
-                    <th scope="col">@sortablelink('img_path', '商品画像')</th>
+                    <th scope="col">商品名</th>
+                    <th scope="col">メーカー</th>
+                    <th scope="col">価格</th>
+                    <th scope="col">在庫</th>
+                    <th scope="col">コメント</th>
+                    <th scope="col">商品画像</th>
                     <th>操作</th>
                 </tr>
             </thead>
@@ -69,13 +69,12 @@
                 <form method="POST" action="{{ route('products.destroy', $product) }}" class="d-inline">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger btn-sm mx-1 delete-btn" data-product_id="{{ $product->id }}">削除</button>
+                    <button type="submit" class="btn btn-danger btn-sm mx-1 btn-delete" data-product_id="{{ $product->id }}">削除</button>
                 </form>
             </td>
         </tr>
     @endforeach
-</tbody>
-
+            </tbody>
         </table>
     </div>
 </div>

@@ -107,13 +107,23 @@ public function search(Request $request)
 
     public function destroy($id)
 {
-    $product = Product::findOrFail($id);
-    
-    $product->sales()->delete();
-    
-    $product->delete();
-    
-    return response()->json(['redirect' => route('products.index')]);
+    try {
+        $product = Product::findOrFail($id);
+        
+        $product->sales()->delete();
+        
+        $product->delete();
+        
+        return response()->json([
+            'message' => '商品が削除されました。',
+            'redirect' => route('products.index')
+        ]);
+
+    } catch (\Exception $e) {
+        return response()->json([
+            'error' => '商品の削除中にエラーが発生しました。',
+        ], 500); 
+    }
 }
 
     
