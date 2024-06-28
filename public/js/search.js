@@ -47,7 +47,7 @@ $(function() {
                       <td>
                           <a href="/products/${product.id}" class="btn btn-info btn-sm mx-1">詳細表示</a>
                           <a href="/products/${product.id}/edit" class="btn btn-primary btn-sm mx-1">編集</a>
-                          <button class="btn btn-danger btn-sm mx-1 btn-delete" data-product_id="${product.id}" onclick="return confirm('削除しますか？')">削除</button>
+                          <button class="btn btn-danger btn-sm mx-1 btn-delete" data-product_id="${product.id}">削除</button>
                       </td>
                   </tr>
               `;
